@@ -51,13 +51,13 @@ EDISON/
 실습 자료(GitHub 저장소) 다운로드
 
 ```bash
-git clone https://github.com/ki-won-yang/test_QE.git
+git clone https://github.com/YHKlab/ESEC2026.git
 ```
 
 다운로드한 실습 폴더로 이동
 
 ```bash
-cd test_QE
+cd ESEC2026/QE
 ```
 
 프로젝트 루트에서 필요한 pseudopotential을 준비합니다.
