@@ -1,0 +1,25 @@
+NumberOfAtoms    5
+NumberOfSpecies  2
+
+%block ChemicalSpeciesLabel
+ 1 6 C
+ 2 1 H
+%endblock ChemicalSpeciesLabel
+
+LatticeConstant 10.000000000 Ang
+
+%block LatticeVectors
+    1.000000000     0.000000000     0.000000000
+    0.000000000     1.000000000     0.000000000
+    0.000000000     0.000000000     1.000000000
+%endblock LatticeVectors
+
+AtomicCoordinatesFormat ScaledCartesian
+
+%block AtomicCoordinatesAndAtomicSpecies
+ 0.4991728  0.4991728  0.4992459  1  1
+ 0.6028726  0.4747901  0.4680767  2  2
+ 0.4747901  0.6028726  0.4680767  2  3
+ 0.4908115  0.4908115  0.6096102  2  4
+ 0.4285072  0.4285072  0.4511578  2  5
+%endblock AtomicCoordinatesAndAtomicSpecies

@@ -1,0 +1,24 @@
+NumberOfAtoms    3
+NumberOfSpecies  2
+
+%block ChemicalSpeciesLabel
+ 1 8 O
+ 2 1 H
+%endblock ChemicalSpeciesLabel
+
+LatticeConstant 10.000000000 Ang
+
+%block LatticeVectors
+    1.000000000     0.000000000     0.000000000
+    0.000000000     1.000000000     0.000000000
+    0.000000000     0.000000000     1.000000000
+%endblock LatticeVectors
+
+AtomicCoordinatesFormat ScaledCartesian
+
+# 약간 비대칭으로 시작 (한쪽 O-H 길이를 살짝 다르게)
+%block AtomicCoordinatesAndAtomicSpecies
+ 0.5000000  0.5000000  0.5000000  1  1
+ 0.5757000  0.5586000  0.5000000  2  2
+ 0.4243000  0.5586000  0.5000000  2  3
+%endblock AtomicCoordinatesAndAtomicSpecies
