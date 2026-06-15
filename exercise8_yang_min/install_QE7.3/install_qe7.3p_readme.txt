@@ -1,0 +1,9 @@
+### install method of QE 7.3 with patch
+1. bash install_qe7.3p1.sh
+
+2. modify make.inc in /install-dir/q-e
+  FFLAGS 및 FFLAGS_NOOPT 줄 끝에 " -ffree-line-length-none"을 추가한 후 저장.
+    FFLAGS         = -O3 -g -ffree-line-length-none
+    FFLAGS_NOOPT   = -O0 -g -ffree-line-length-none
+
+3. bash install_qe7.3p2.sh

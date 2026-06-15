@@ -1,0 +1,5 @@
+&bands
+    prefix       = 'NiO',
+    outdir       = './outdir'
+    filband = 'pp.out'
+/

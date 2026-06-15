@@ -1,0 +1,51 @@
+ &control
+   title='NiO'
+   calculation  = 'scf',
+   prefix       = 'NiO',
+   pseudo_dir   = '../../pp/PBE/',
+   outdir       = './outdir',
+   verbosity    = 'high'
+   disk_io      = 'low',
+ /
+ &system
+   ibrav = 0
+   nat = 4
+   ntyp = 3
+   ecutwfc = 65, 
+   occupations= 'smearing'
+   smearing='gaussian'
+   degauss=0.01
+   nspin = 2,
+   starting_magnetization(1) = 0.5, starting_magnetization(2) = -0.5 
+ /
+ &electrons
+   diagonalization = 'david',
+   conv_thr        =  1.0D-6,
+   mixing_beta     =  0.7,
+ /
+&IONS
+!  upscale           = 100.D0,
+!   ion_dynamics = 'damp'
+/
+&CELL
+!  cell_dynamics     = 'bfgs'
+!  press_conv_thr    = 0.5d0
+/
+ATOMIC_SPECIES
+Ni1 58.69 Ni.upf
+Ni2 58.69 Ni.upf
+O   15.99 O.upf
+
+CELL_PARAMETERS (angstrom)
+   2.010698779   2.010698779   4.054220167
+   2.010698779   4.054220167   2.010698779
+   4.054220167   2.010698779   2.010698779
+
+ATOMIC_POSITIONS (crystal)
+Ni1      0.00000000     0.00000000     0.00000000
+Ni2      0.50000000     0.50000000     0.50000000
+O        0.25000000     0.25000000     0.25000000
+O        0.75000000     0.75000000     0.75000000
+
+K_POINTS (automatic)
+   5  5  5  0  0  0
