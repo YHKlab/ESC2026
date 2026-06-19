@@ -1,10 +1,10 @@
 #!/bin/bash
-#SBATCH --job-name=CH4
-#SBATCH --output=CH4.slurm.%j.out
-#SBATCH --error=CH4.slurm.%j.err
+#SBATCH --job-name=Si
+#SBATCH --output=Si.slurm.%j.out
+#SBATCH --error=Si.slurm.%j.err
 #SBATCH --ntasks=4
 
-LABEL="CH4"
+LABEL="Si"
 INPUT="RUN.fdf"
 WORKDIR=${SLURM_SUBMIT_DIR:-$PWD}
 NTASKS=${SLURM_NTASKS:-4}

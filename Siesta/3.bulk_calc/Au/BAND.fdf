@@ -1,0 +1,20 @@
+# FCC BZ high-symmetry path: L - Gamma - X - W - K - Gamma
+# Coordinates in fractional units of reciprocal lattice vectors (b1, b2, b3)
+# b1=2pi/a*(-1,1,1), b2=2pi/a*(1,-1,1), b3=2pi/a*(1,1,-1)
+#
+# L    = (1/2, 1/2, 1/2)
+# Gamma = (0,   0,   0  )
+# X    = (0,   1/2, 1/2)
+# W    = (1/2, 1/4, 3/4)
+# K    = (3/8, 3/8, 3/4)
+
+BandLinesScale  ReciprocalLatticeVectors
+
+%block BandLines
+  1   0.500  0.500  0.500  L
+ 30   0.000  0.000  0.000  \Gamma
+ 30   0.000  0.500  0.500  X
+ 15   0.500  0.250  0.750  W
+ 20   0.375  0.375  0.750  K
+ 20   0.000  0.000  0.000  \Gamma
+%endblock BandLines

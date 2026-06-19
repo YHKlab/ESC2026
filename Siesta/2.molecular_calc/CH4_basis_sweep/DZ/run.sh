@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=CH4
+#SBATCH --job-name=CH4_DZ
 #SBATCH --output=CH4.slurm.%j.out
 #SBATCH --error=CH4.slurm.%j.err
 #SBATCH --ntasks=4

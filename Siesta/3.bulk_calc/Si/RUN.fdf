@@ -1,0 +1,27 @@
+SystemName      Si bulk (diamond, SIESTA 5.4.2)
+SystemLabel     Si
+
+%include STRUCT.fdf
+%include BASIS.fdf
+%include KPT.fdf
+%include BAND.fdf
+
+XC.functional   GGA
+XC.authors      PBE
+
+# SCF
+MeshCutoff          200.0 Ry
+DM.Tolerance        1.d-5
+DM.MixingWeight     0.1
+DM.NumberPulay      4
+MaxSCFIterations    200
+
+# Band structure output
+WriteBands          T
+WriteEigenvalues    T
+WriteKbands         T
+
+# PDOS
+%block ProjectedDensityOfStates
+-15.00  10.00  0.10  500  eV
+%endblock ProjectedDensityOfStates

@@ -1,0 +1,32 @@
+SystemName      Au bulk (FCC, SIESTA 5.4.2)
+SystemLabel     Au
+
+%include STRUCT.fdf
+%include BASIS.fdf
+%include KPT.fdf
+%include BAND.fdf
+
+XC.functional   GGA
+XC.authors      PBE
+
+# SCF
+MeshCutoff          300.0 Ry
+DM.Tolerance        1.d-5
+DM.MixingWeight     0.05
+DM.NumberPulay      6
+MaxSCFIterations    300
+
+# Metal: Methfessel-Paxton smearing
+OccupationFunction  MP
+OccupationMPOrder   2
+ElectronicTemp      0.1 eV
+
+# Band structure output
+WriteBands          T
+WriteEigenvalues    T
+WriteKbands         T
+
+# PDOS
+%block ProjectedDensityOfStates
+-25.00  10.00  0.10  500  eV
+%endblock ProjectedDensityOfStates
