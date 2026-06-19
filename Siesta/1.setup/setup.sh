@@ -4,7 +4,7 @@
 
 set -e
 
-ENV_NAME="summer"
+ENV_NAME="siesta"
 
 echo "=== SIESTA 2026 실습 환경 설정 ==="
 echo ""
