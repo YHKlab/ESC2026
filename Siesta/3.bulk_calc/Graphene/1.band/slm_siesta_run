@@ -1,0 +1,47 @@
+#!/bin/bash
+#SBATCH --job-name=Graphene_band
+#SBATCH --output=%x.%j.out
+#SBATCH --error=%x.%j.err
+#SBATCH --ntasks=16
+
+# ===== 사용자 설정 =====
+INPUT=RUN.fdf
+OUTPUT=stdout.txt
+INP_DIR=input
+OUT_DIR=output
+# ======================
+
+WORKDIR=${SLURM_SUBMIT_DIR:-$PWD}
+cd "$WORKDIR"
+
+# input 폴더 확인
+if [ ! -d "$INP_DIR" ]; then
+  echo "ERROR: '$INP_DIR' directory not found in $WORKDIR"
+  exit 1
+fi
+
+# output 폴더 준비 (기존 output은 output.OLD로 백업)
+if [ -d "$OUT_DIR" ]; then
+  rm -rf "${OUT_DIR}.OLD"
+  mv "$OUT_DIR" "${OUT_DIR}.OLD"
+fi
+mkdir -p "$OUT_DIR"
+
+# input 파일들(수도포텐셜 포함) 전부 output으로 복사
+cp -r "$INP_DIR"/* "$OUT_DIR"/
+
+# output 폴더에서 계산 실행
+cd "$OUT_DIR"
+
+# UCX 및 shared memory BTL 회피
+export OMPI_MCA_pml=ob1
+export OMPI_MCA_btl=tcp,self
+
+# 깨진 restart density matrix 제거
+rm -f *.DM *.DMHS
+
+/usr/mpi/gcc/openmpi-4.1.5a1/bin/mpirun -np "$SLURM_NTASKS" \
+  singularity exec \
+  -B "$WORKDIR/$OUT_DIR:/work" \
+  /singularity/siesta_5.4.2.sif \
+  bash -lc "cd /work && siesta < $INPUT" > "$OUTPUT"
