@@ -1,7 +1,0 @@
-===== ENV =====
-slurmd-0
-SLURM_NTASKS=4
-INPUT=sih.fdf
-===== LDD =====
-===== RUN =====
-===== CHECK =====
