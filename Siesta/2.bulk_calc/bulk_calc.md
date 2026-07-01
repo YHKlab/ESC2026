@@ -13,7 +13,7 @@
 
 ```bash
 conda activate siesta
-cd ~/workspace/ESC2026/Siesta/3.bulk_calc
+cd ~/workspace/ESC2026/Siesta/2.bulk_calc
 ```
 - 슈도포텐셜·기저는 각 `input/` 에 포함.
 - 후처리 도구(`gnubands`, `Eig2DOS`, `fmpdos`)는 SIESTA 와 함께 PATH(`/opt/siesta-5.4.2-install/bin`)에 있음.

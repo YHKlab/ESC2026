@@ -4,7 +4,7 @@
 
 ```bash
 conda activate summer
-cd ~/2026-Siesta/2.molecular_calc
+cd ~/2026-Siesta/1.molecular_calc
 ```
 
 ---
