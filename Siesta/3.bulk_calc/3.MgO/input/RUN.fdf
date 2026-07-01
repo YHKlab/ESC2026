@@ -1,7 +1,7 @@
 #(1) General system descriptors
 
-SystemName            Solid  # Descriptive name of the system
-SystemLabel           Solid  # Short name for naming files
+SystemName            MgO    # Descriptive name of the system
+SystemLabel           MgO    # Short name for naming files
 %include STRUCT.fdf
 %include KPT.fdf
 #%include BASIS.fdf

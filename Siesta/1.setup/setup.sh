@@ -5,16 +5,18 @@
 set -e
 
 ENV_NAME="siesta"
+CONDA_BASE="/opt/miniconda3"   # 시스템 공용 miniconda 사용
 
 echo "=== SIESTA 2026 실습 환경 설정 ==="
 echo ""
 
-# conda 존재 확인
-if ! command -v conda &> /dev/null; then
-    echo "[error] conda가 설치되어 있지 않습니다."
-    echo "  Miniforge: https://github.com/conda-forge/miniforge"
+# /opt miniconda 확인 후 활성화 (PATH 에 다른 conda 가 있어도 이걸 사용)
+if [ ! -x "${CONDA_BASE}/bin/conda" ]; then
+    echo "[error] ${CONDA_BASE} 에 conda 가 없습니다."
     exit 1
 fi
+source "${CONDA_BASE}/etc/profile.d/conda.sh"
+# 참고: ${CONDA_BASE} 는 root 소유라 새 env(${ENV_NAME})는 ~/.conda/envs 에 생성됨
 
 # 환경 생성 (이미 있으면 스킵)
 if conda env list | grep -q "^${ENV_NAME} "; then

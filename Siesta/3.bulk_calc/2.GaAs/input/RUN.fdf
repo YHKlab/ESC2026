@@ -1,7 +1,7 @@
 #(1) General system descriptors
 
-SystemName            Solid  # Descriptive name of the system
-SystemLabel           Solid  # Short name for naming files
+SystemName            GaAs   # Descriptive name of the system
+SystemLabel           GaAs   # Short name for naming files
 %include STRUCT.fdf
 %include KPT.fdf
 #%include BASIS.fdf

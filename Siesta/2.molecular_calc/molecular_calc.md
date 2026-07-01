@@ -66,17 +66,9 @@ sgeom H2O.XV    H2O_opt.xsf     # 최적화 후 구조 → XSF 변환
 
 **전하 밀도 시각화**
 ```bash
-python scripts/plot_rho_slice.py H2O
-# → figures/h2o_rho_slice.png   (전체 전하 밀도)
-# → figures/h2o_drho_slice.png  (차분 전하 밀도)
+sgrid H2O.RHO H2O_rho.xsf       # 전하 밀도 → XSF 변환
+sgrid H2O.RHO H2O_rho.xsf       # 전하 밀도 → XSF 변환
 ```
-
-**Hirshfeld 부분 전하 확인**
-```bash
-grep -A 10 "Hirshfeld" H2O.out
-```
-
----
 
 ## NH3 — 직접 해보기
 
@@ -92,7 +84,7 @@ sbatch run.sh
 python scripts/plot_convergence.py NH3
 sgeom STRUCT.fdf STRUCT.xsf     # 초기 구조 → XSF 변환
 sgeom NH3.XV    NH3_opt.xsf     # 최적화 후 구조 → XSF 변환
-python scripts/plot_rho_slice.py NH3
+sgrid NH3.RHO   NH3_rho.xsf     # 전하 밀도 → XSF 변환
 ```
 
 ---
