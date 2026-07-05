@@ -2,16 +2,20 @@
 #SBATCH --job-name=qe_bandU
 #SBATCH --output=qe_bandU.%j.out
 #SBATCH --error=qe_bandU.%j.err
-#SBATCH --ntasks=8
+#SBATCH --nodes=1
+#SBATCH --ntasks=16        # MPI 프로세스 수 (병렬)
+#SBATCH --cpus-per-task=1
 
-# 제출 위치 = 단계 폴더 (예: .../QE/5_band_U)
+# === 병렬 설정 ===
+#   ntasks = 전체 MPI 프로세스, NPOOL = k-point 병렬 pool 수
+#   조건: ntasks가 NPOOL로 나누어떨어져야 함 (예: 16 / 4 = pool당 4프로세스)
+NPOOL=4
+
 STAGEDIR=${SLURM_SUBMIT_DIR:-$PWD}
-QEROOT="$(cd "$STAGEDIR/.." && pwd)"   # QE/ 최상위 절대경로
+QEROOT="$(cd "$STAGEDIR/.." && pwd)"
 STAGE="$(basename "$STAGEDIR")"
 
-# QE/ 전체를 컨테이너의 /work로 바인드.
-# 단계 폴더(/work/$STAGE)에서 실행 → ../tmp2~5, ../pseudo 상대경로가
-# 마스터와 동일하게 작동 (band_U는 scf_U가 만든 tmp2~5를 그대로 읽음).
+# 컨테이너(QE v6.5) 안에서 노드 전용 스크립트 실행
 singularity exec \
   -B "$QEROOT:/work" \
   /singularity/quantum-mobile___1.0.0 \
@@ -22,6 +26,7 @@ singularity exec \
     export OMPI_MCA_oob=^ud
     export OMPI_MCA_btl_vader_single_copy_mechanism=none
     cd /work/$STAGE
-    export QE_MPIRUN='mpirun -np ${SLURM_NTASKS}'
-    bash run_bands.sh
+    export QE_MPIRUN='mpirun -np 16'
+    export NPOOL=
+    bash run_bands_node.sh
   "

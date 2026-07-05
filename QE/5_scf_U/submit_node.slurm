@@ -1,21 +1,18 @@
 #!/bin/bash
-#SBATCH --job-name=qe_scfU
-#SBATCH --output=qe_scfU.%j.out
-#SBATCH --error=qe_scfU.%j.err
+#SBATCH --job-name=qe_scfU_node
+#SBATCH --output=qe_scfU_node.%j.out
+#SBATCH --error=qe_scfU_node.%j.err
 #SBATCH --nodes=1
-#SBATCH --ntasks=16        # MPI 프로세스 수 (병렬)
+#SBATCH --ntasks=8           # MPI 프로세스 (병렬 코어 수)
 #SBATCH --cpus-per-task=1
-
-# === 병렬 설정 ===
-#   ntasks = 전체 MPI 프로세스, NPOOL = k-point 병렬 pool 수
-#   조건: ntasks가 NPOOL로 나누어떨어져야 함 (예: 16 / 4 = pool당 4프로세스)
-NPOOL=4
 
 STAGEDIR=${SLURM_SUBMIT_DIR:-$PWD}
 QEROOT="$(cd "$STAGEDIR/.." && pwd)"
 STAGE="$(basename "$STAGEDIR")"
 
-# 컨테이너(QE v6.5) 안에서 노드 전용 스크립트 실행
+echo "=== Job 시작: $(date) | ntasks=8, npool=4 ==="
+SECONDS=0
+
 singularity exec \
   -B "$QEROOT:/work" \
   /singularity/quantum-mobile___1.0.0 \
@@ -26,7 +23,9 @@ singularity exec \
     export OMPI_MCA_oob=^ud
     export OMPI_MCA_btl_vader_single_copy_mechanism=none
     cd /work/$STAGE
-    export QE_MPIRUN='mpirun -np 16'
-    export NPOOL=
+    export QE_MPIRUN='mpirun -np 8'
+    export NPOOL=4
     bash run_scf_node.sh
   "
+
+echo "=== Job 종료: $(date) | 총 소요: ${SECONDS}초 ==="

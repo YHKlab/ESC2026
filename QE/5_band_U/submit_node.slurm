@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=qe_scf
-#SBATCH --output=qe_scf.%j.out
-#SBATCH --error=qe_scf.%j.err
+#SBATCH --job-name=qe_bandU_node
+#SBATCH --output=qe_bandU_node.%j.out
+#SBATCH --error=qe_bandU_node.%j.err
 #SBATCH --nodes=1
 #SBATCH --ntasks=8           # MPI 프로세스 (병렬 코어 수)
 #SBATCH --cpus-per-task=1
@@ -10,10 +10,9 @@ STAGEDIR=${SLURM_SUBMIT_DIR:-$PWD}
 QEROOT="$(cd "$STAGEDIR/.." && pwd)"
 STAGE="$(basename "$STAGEDIR")"
 
-echo "=== Job 시작: $(date) | ntasks=8, npool=2 ==="
+echo "=== Job 시작: $(date) | ntasks=8, npool=4 ==="
 SECONDS=0
 
-# QE/ 전체를 /work로 바인드 → in파일의 ../pseudo, ../tmp_X 상대경로 그대로 작동
 singularity exec \
   -B "$QEROOT:/work" \
   /singularity/quantum-mobile___1.0.0 \
@@ -25,8 +24,8 @@ singularity exec \
     export OMPI_MCA_btl_vader_single_copy_mechanism=none
     cd /work/$STAGE
     export QE_MPIRUN='mpirun -np 8'
-    export NPOOL=2
-    bash run_all.sh
+    export NPOOL=4
+    bash run_bands_node.sh
   "
 
 echo "=== Job 종료: $(date) | 총 소요: ${SECONDS}초 ==="

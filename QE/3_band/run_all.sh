@@ -3,13 +3,14 @@
 set -uo pipefail
 # 마스터: 빈 값(직렬) / 노드 slurm: mpirun -np N 이 주입됨
 QE_MPIRUN="${QE_MPIRUN:-}"
+NPOOL="${NPOOL:-1}"        # k-point pool 병렬 (slurm에서 주입)
 export OMPI_MCA_pml=ob1; export OMPI_MCA_btl=self,tcp; export OMP_NUM_THREADS=1
 if ! command -v pw.x >/dev/null 2>&1 && [ -f "$HOME/miniconda3/bin/activate" ]; then
     source "$HOME/miniconda3/bin/activate"; fi
 for MAT in graphene Al Si; do
   if [ ! -d ../tmp_${MAT} ]; then echo "  [경고] ../tmp_${MAT} 없음 → 2_scf를 먼저 실행하세요"; continue; fi
   echo "=== [$MAT] bands ==="
-  pw.x    < ${MAT}.bands.in    > ${MAT}.bands.out
+  $QE_MPIRUN pw.x -npool $NPOOL < ${MAT}.bands.in > ${MAT}.bands.out
   $QE_MPIRUN bands.x < ${MAT}.bands_pp.in > ${MAT}.bands_pp.out
 done
 echo; echo "비교: python3 plot_compare.py"
