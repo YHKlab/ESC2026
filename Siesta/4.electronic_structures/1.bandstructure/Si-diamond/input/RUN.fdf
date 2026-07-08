@@ -58,3 +58,11 @@ WriteMDXmol           T      # SystemLabel.ANI, optimization
 WriteCoorXmol        .true.  # SystemLavel.xyz 
 WriteCoorStep        .true.  # SystemLabel.XV , rho2xsf
 
+
+BandLinesScale ReciprocalLatticeVectors
+%block BandLines
+  1    0.00000 0.000000 0.50000  L
+  50   0.00000 0.000000 0.00000  G
+  50   0.50000 0.000000 0.50000  X
+%endblock BandLines
+

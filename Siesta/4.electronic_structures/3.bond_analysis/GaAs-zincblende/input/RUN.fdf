@@ -4,8 +4,7 @@ SystemName            GaAs   # Descriptive name of the system
 SystemLabel           GaAs   # Short name for naming files
 %include STRUCT.fdf
 %include KPT.fdf
-#%include BASIS.fdf
-#%include TS.fdf # for transiesta calculation
+%include BASIS.fdf
 
 #(4) DFT, Grid, SCF
 
@@ -41,17 +40,11 @@ MD.NumCGsteps         0         # 0 for single-point / 100 for gopt
 MD.MaxCGDispl         0.2 Bohr      # Default: 0.2 Bohr
 MD.MaxForceTol        0.01  eV/Ang   # Default: 0.04 eV/Ang
 MD.MaxStressTol       0.1 GPa       # Default: 1.0 GPa
-#MD.PreconditionVariableCell 5.0 Ang
-#MD.TargetPressure 0.0 Gpa
-
-
-User.Basis            T
-DFT-half.Local        T
-DFT-half.Local.SCF    T
 
 #(10) Options for saving/reading information
 SaveRho               T      # SystemLabel.RHO, rho2xsf(3D),macroave-charge dendity(1D)
 SaveDeltaRho          T      # SystemLabel.DRHO
 WriteMDXmol           T      # SystemLabel.ANI, optimization
 WriteCoorXmol        .true.  # SystemLavel.xyz
+WriteMullikenPop      1
 
