@@ -1,0 +1,60 @@
+#--------------------------------------------------
+# FDF for water
+#--------------------------------------------------
+#(1) General system descriptors
+SystemName            H2O           # Descriptive name of the system
+SystemLabel           H2O           # Short name for naming files
+%include STRUCT.fdf
+%include KPT.fdf
+%include BASIS.fdf
+
+
+#(2) DFT, Grid, SCF
+XC.functional         LDA           # LDA or GGA (default = LDA)
+XC.authors            CA            # CA (Ceperley-Aldr) = PZ
+                                    #    (Perdew-Zunger) - LDA - Default
+                                    # PW92 (Perdew-Wang-92) - LDA
+                                    # PBE (Perdew-Burke-Ernzerhof) - GGA
+MeshCutoff            100.000000    Ry      # Default: 50.0 Ry ~ 0.444 Bohr
+                                    #         100.0 Ry ~ 0.314 Bohr
+
+MaxSCFIterations      500           # Default: 50
+DM.MixingWeight       0.05          # Default: 0.25
+DM.NumberPulay        10            # Default: 0
+DM.PulayOnFile        F             # SystemLabel.P1, SystemLabel.P2
+SCF.Mixer.Method      Pulay
+SCF.Converge.DM          true         # Default: T
+SCF.Tolerance.DM         1.d-4        # Default: 1.d-4
+SCF.Converge.H           true         # Default: T
+SCF.Tolerance.H          1.d-3  eV    # Default: 1.d-3 eV
+
+DM.UseSaveDM          .true.        # because of the bug
+SCFMustConverge       .true.        
+NeglNonOverlapInt     F             # Default: F
+
+
+#(3) Eigenvalue problem: order-N or diagonalization
+SolutionMethod        Diagon        # or Transiesta
+ElectronicTemperature 300.0 K       # Default: 300.0 K
+
+
+#(4) Molecular dynamics and relaxations
+MD.TypeOfRun          CG            # Type of dynamics:
+MD.VariableCell       F
+MD.NumCGsteps         300           # 0 for single-point / 100 for gopt
+MD.MaxCGDispl         0.2 Bohr      # Default: 0.2 Bohr
+MD.MaxForceTol        0.02 eV/Ang   # Default: 0.04 eV/Ang
+
+#(10) Output options
+WriteEigenvalues      T      # SystemLabel.out [otherwise ~.EIG]
+AllocReportLevel      0      # SystemLabel.alloc, Default: 0
+WriteHirshfeldPop     T
+SaveHS                T      # SystemLabel.HS
+SaveRho               T      # SystemLabel.RHO, rho2xsf(3D),macroave-charge dendity(1D)
+SaveDeltaRho          T      # SystemLabel.DRHO
+SaveElectrostaticPotential T # SystemLabel.VH , macroave-potential
+SaveTotalPotential    T      # SystemLabel.VT
+WriteMDXmol           T      # SystemLabel.ANI, optimization
+WriteCoorXmol        .true.  # SystemLavel.xyz 
+WriteCoorStep        .true.  # SystemLabel.XV , rho2xsf
+
