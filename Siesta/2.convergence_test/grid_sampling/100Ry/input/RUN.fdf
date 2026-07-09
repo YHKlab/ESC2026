@@ -41,7 +41,7 @@ ElectronicTemperature 300.0 K       # Default: 300.0 K
 #(4) Molecular dynamics and relaxations
 MD.TypeOfRun          CG            # Type of dynamics:
 MD.VariableCell       F
-MD.NumCGsteps         300           # 0 for single-point / 100 for gopt
+MD.NumCGsteps         0             # 0 for single-point / 100 for gopt
 MD.MaxCGDispl         0.2 Bohr      # Default: 0.2 Bohr
 MD.MaxForceTol        0.02 eV/Ang   # Default: 0.04 eV/Ang
 
