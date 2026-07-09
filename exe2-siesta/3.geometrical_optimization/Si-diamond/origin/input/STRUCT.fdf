@@ -9,13 +9,13 @@ NumberOfSpecies  1           # Number of species
 
 LatticeConstant       1.000000000 Ang
 %block LatticeVectors
-    3.851091773     0.000000000     0.000000000
-    1.925545886     3.335143308     0.000000000
-    1.925545886     1.111714436     3.144403266
+    3.827985222     0.000000000     0.000000000
+    1.913992611     3.315132448     0.000000000
+    1.913992611     1.105044149     3.125536846
 %endblock LatticeVectors
 
 AtomicCoordinatesFormat Ang
 %block AtomicCoordinatesAndAtomicSpecies
      0.000000000     0.000000000     0.000000000    1    1
-     1.925545886     1.111714436     0.786100817    1    2
+     1.913992611     1.105044149     0.781384212    1    2
 %endblock AtomicCoordinatesAndAtomicSpecies
