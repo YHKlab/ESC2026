@@ -25,6 +25,7 @@ SCFMustConverge       .true.
 NeglNonOverlapInt     F             # Default: F
 #DM.MixSCF1            T
 #TS.CalcGF             F             # Default: T
+Diag.ParallelOverK .true.
 
 #(5) Eigenvalue problem: order-N or diagonalization
 
