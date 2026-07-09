@@ -31,7 +31,7 @@ SCF.Tolerance.H          1.d-3  eV    # Default: 1.d-3 eV
 DM.UseSaveDM          .true.        # because of the bug
 SCFMustConverge       .true.        
 NeglNonOverlapInt     F             # Default: F
-
+Diag.ParallelOverK .true.
 
 #(3) Eigenvalue problem: order-N or diagonalization
 SolutionMethod        Diagon        # or Transiesta
