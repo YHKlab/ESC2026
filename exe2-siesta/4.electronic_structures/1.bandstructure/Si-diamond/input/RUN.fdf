@@ -61,8 +61,9 @@ WriteCoorStep        .true.  # SystemLabel.XV , rho2xsf
 
 BandLinesScale ReciprocalLatticeVectors
 %block BandLines
-  1    0.00000 0.000000 0.50000  L
+  1    0.50000 0.500000 0.50000  L
   50   0.00000 0.000000 0.00000  G
   50   0.50000 0.000000 0.50000  X
+  50   0.62500 0.250000 0.62500  U
 %endblock BandLines
 
