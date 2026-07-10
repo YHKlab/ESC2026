@@ -1,0 +1,41 @@
+#!/bin/bash
+#SBATCH --job-name=GaAs
+#SBATCH --output=%x.%j.out
+#SBATCH --error=%x.%j.err
+#SBATCH --ntasks=4
+
+INPUT=RUN.fdf
+OUTPUT=stdout.txt
+INP_DIR=input
+OUT_DIR=OUT
+
+WORKDIR=${SLURM_SUBMIT_DIR:-$PWD}
+cd "$WORKDIR"
+
+if [ ! -d "$INP_DIR" ]; then
+  echo "ERROR: '$INP_DIR' directory not found in $WORKDIR"
+  exit 1
+fi
+
+if [ -d "$OUT_DIR" ]; then
+  rm -rf "${OUT_DIR}.OLD"
+  mv "$OUT_DIR" "${OUT_DIR}.OLD"
+fi
+mkdir -p "$OUT_DIR"
+
+cp -r "$INP_DIR"/* "$OUT_DIR"/
+
+cd "$OUT_DIR"
+
+export OMPI_MCA_pml=ob1
+export OMPI_MCA_btl=tcp,self
+
+rm -f *.DM *.DMHS
+
+/usr/mpi/gcc/openmpi-4.1.5a1/bin/mpirun -np "$SLURM_NTASKS" \
+  singularity exec \
+  -B "$WORKDIR/$OUT_DIR:/work" \
+  /singularity/siesta_5.4.2.sif \
+  bash -lc "cd /work && siesta < $INPUT" > "$OUTPUT"
+
+cp "$OUTPUT" ../.

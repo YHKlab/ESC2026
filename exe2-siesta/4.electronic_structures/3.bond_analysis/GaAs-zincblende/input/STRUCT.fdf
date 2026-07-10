@@ -1,4 +1,4 @@
-NumberOfAtoms    2           # Number of atoms
+NumberOfAtoms    8           # Number of atoms (conventional cubic zincblende)
 NumberOfSpecies  2           # Number of species
 
 %block ChemicalSpeciesLabel
@@ -7,16 +7,23 @@ NumberOfSpecies  2           # Number of species
 %endblock ChemicalSpeciesLabel
 
 #(3) Lattice, coordinates, k-sampling
+# Conventional cubic zincblende cell: a = a_primitive * sqrt(2)
 
-LatticeConstant       1.000000000 Ang
+LatticeConstant       5.629831240 Ang
 %block LatticeVectors
-    3.980891847     0.000000000     0.000000000
-    1.990445923     3.447553469     0.000000000
-    1.990445923     1.149184490     3.250384583
+    1.000000000     0.000000000     0.000000000
+    0.000000000     1.000000000     0.000000000
+    0.000000000     0.000000000     1.000000000
 %endblock LatticeVectors
 
-AtomicCoordinatesFormat Ang
+AtomicCoordinatesFormat Fractional
 %block AtomicCoordinatesAndAtomicSpecies
-     0.000000000     0.000000000     0.000000000    1    1
-     1.990445923     1.149184490     0.812596146    2    2
+    0.000000000     0.000000000     0.000000000    1   Ga
+    0.500000000     0.500000000     0.000000000    1   Ga
+    0.500000000     0.000000000     0.500000000    1   Ga
+    0.000000000     0.500000000     0.500000000    1   Ga
+    0.250000000     0.250000000     0.250000000    2   As
+    0.750000000     0.750000000     0.250000000    2   As
+    0.750000000     0.250000000     0.750000000    2   As
+    0.250000000     0.750000000     0.750000000    2   As
 %endblock AtomicCoordinatesAndAtomicSpecies

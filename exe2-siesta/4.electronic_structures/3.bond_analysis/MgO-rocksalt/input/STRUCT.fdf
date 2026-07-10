@@ -1,4 +1,4 @@
-NumberOfAtoms    2           # Number of atoms
+NumberOfAtoms    8           # Number of atoms (conventional cubic rocksalt)
 NumberOfSpecies  2           # Number of species
 
 %block ChemicalSpeciesLabel
@@ -7,16 +7,23 @@ NumberOfSpecies  2           # Number of species
 %endblock ChemicalSpeciesLabel
 
 #(3) Lattice, coordinates, k-sampling
+# Conventional cubic rocksalt cell: a = a_primitive * sqrt(2)
 
-LatticeConstant       1.000000000 Ang
+LatticeConstant       4.152266784 Ang
 %block LatticeVectors
-        2.936096    0.000000   -0.000000
-        1.468048    2.542734   -0.000000
-        1.468048    0.847578    2.397312
+    1.000000000     0.000000000     0.000000000
+    0.000000000     1.000000000     0.000000000
+    0.000000000     0.000000000     1.000000000
 %endblock LatticeVectors
 
-AtomicCoordinatesFormat Ang
+AtomicCoordinatesFormat Fractional
 %block AtomicCoordinatesAndAtomicSpecies
-   -0.00001609   -0.00001026   -0.00000820   1       1  Mg
-    2.93609805    1.69515451    1.19865512   2       2  O
+    0.000000000     0.000000000     0.000000000    1   Mg
+    0.500000000     0.500000000     0.000000000    1   Mg
+    0.500000000     0.000000000     0.500000000    1   Mg
+    0.000000000     0.500000000     0.500000000    1   Mg
+    0.500000000     0.000000000     0.000000000    2   O
+    0.000000000     0.500000000     0.000000000    2   O
+    0.000000000     0.000000000     0.500000000    2   O
+    0.500000000     0.500000000     0.500000000    2   O
 %endblock AtomicCoordinatesAndAtomicSpecies
