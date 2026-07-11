@@ -79,7 +79,7 @@ QE/
 
 ```bash
 git clone https://github.com/YHKlab/ESEC2026.git
-cd ESEC2026/QE
+cd ESEC2026/exe3-qe
 ```
 
 ### 0.2 QE 설치 (Conda 방식)
@@ -92,18 +92,11 @@ bash 0_setup/install_qe7.4.sh
 
 > **새 터미널을 열 필요가 없습니다.** `conda init`을 하지 않으므로, 계산 전마다 아래 한 줄로 환경을 잡습니다.
 
-계산 전 매번 (환경 활성화):
+계산 전 (환경 활성화):
 
 ```bash
 source setup_env.sh      # exe3-qe 폴더에서
 which pw.x               # .../.local/env/bin/pw.x 확인
-```
-
-### 0.3 pseudopotential 준비
-
-```bash
-# pseudopotential 확인 (pseudo/ 폴더에 이미 포함됨)
-bash 0_setup/setup_pseudo.sh
 ```
 
 > Python 패키지(`matplotlib`, `numpy`, `ase`)는 설치 시 conda 환경에 함께 포함되므로 별도 `pip install`이 필요 없습니다. (`0_setup/requirements.txt`는 참고용)
