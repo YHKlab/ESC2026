@@ -1,0 +1,5 @@
+&bands
+  prefix = 'Fe'
+  outdir = './temp'
+  filband = 'Fe.bands.dat'
+/
