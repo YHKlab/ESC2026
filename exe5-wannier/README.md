@@ -63,7 +63,7 @@ Wannier interpolation을 하기 위해선 우선 SCF 계산을 한 다음에, co
 
 ```bash
 cd DFT
-bash run_scf.sh
+bash run_dft.sh
 ```
 
 ---
