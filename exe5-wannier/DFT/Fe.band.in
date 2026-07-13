@@ -11,7 +11,6 @@
   A = 2.86
   nat = 1
   ntyp = 1
-  nbnd = 40
   ecutwfc = 60
   occupations = 'smearing'
   smearing = 'mp'
