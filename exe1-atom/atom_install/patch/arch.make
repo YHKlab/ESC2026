@@ -11,8 +11,11 @@ ARCH=macosx-gfortran
 # Somehow (here, or in the environment) define the XMLF90_ROOT and
 # GRIDXC_ROOT symbols
 #
-XMLF90_ROOT=${HOME}/atest/libs
-GRIDXC_ROOT=${HOME}/atest/libgridxc-0.7.6/Gfortran
+# 여기 한곳만 수정
+WDIR := $(HOME)/test/atoms
+#
+XMLF90_ROOT=${WDIR}/libs
+GRIDXC_ROOT=${WDIR}/libgridxc-0.7.6/Gfortran
 #
 #  NOTE: The building mechanism for Siesta-related libraries is still
 #  being refined. The paths of the .mk files under $(XMLF90_ROOT) and $(GRIDXC_ROOT)
