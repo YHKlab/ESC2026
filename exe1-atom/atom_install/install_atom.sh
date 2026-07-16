@@ -1,12 +1,12 @@
 #!/usr/bin/bash
-
+CWD=$(pwd)
 echo "1. Install xml"
 wget https://launchpad.net/xmlf90/trunk/1.5/+download/xmlf90-1.5.4.tar.gz
 tar xvzf xmlf90-1.5.4.tar.gz
 mkdir libs
 cd xmlf90-1.5.4
-echo "./configure --prefix=$HOME/atom/libs"
-./configure --prefix=$HOME/atom/libs
+echo "./configure --prefix=${CWD}/libs"
+./configure --prefix=${CWD}/libs
 make -j4
 make install
 cd ..
