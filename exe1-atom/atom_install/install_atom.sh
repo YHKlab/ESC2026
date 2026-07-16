@@ -9,8 +9,8 @@ echo "./configure --prefix=${CWD}/libs"
 ./configure --prefix=${CWD}/libs
 make -j4
 make install
-cd ..
 echo "2. Install libgrid"
+cd ${CWD}
 wget https://launchpad.net/libgridxc/trunk/0.7/+download/libgridxc-0.7.6.tgz
 tar xvzf libgridxc-0.7.6.tgz
 cd libgridxc-0.7.6
@@ -19,11 +19,12 @@ cp extra/fortran.mk Gfortran
 cd Gfortran
 sh ../src/config.sh         # this makes makefile
 make
-cd ../..
 echo "3. atom install"
+cd ${CWD}
 wget https://siesta-project.org/SIESTA_MATERIAL/Pseudos/Code/atom-4.2.7-100.tgz
 tar xvzf atom-4.2.7-100.tgz
 cd atom-4.2.7-100
 #cp arch.make.sample arch.make
 cp ../patch/arch.make .
 make
+cd ${CWD}
