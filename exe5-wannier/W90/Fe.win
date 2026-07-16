@@ -4,6 +4,8 @@ exclude_bands = 1-8
 
 num_iter = 0
 conv_window = 5
+!higher_order_n = 2 ! for higher-order finite difference, 
+!go to develop branch https://github.com/wannier-developers/wannier90/tree/develop
 
 dis_froz_max = 25.0000
 dis_num_iter = 10000
