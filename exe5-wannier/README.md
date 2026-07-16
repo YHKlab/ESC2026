@@ -48,7 +48,7 @@ Conda로 Quantum ESPRESSO/W90/WB를 설치합니다.
 conda create -n wannierberri
 conda activate wannierberri
 conda install -c conda-forge qe pip
-pip install ray irrep wannierberri
+pip install ray irrep pyfftw wannierberri
 ```
 
 ---
